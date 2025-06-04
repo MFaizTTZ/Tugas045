@@ -18,7 +18,7 @@
     </nav>
     <p>
     <center>
-        <img src="C:\xampp\htdocs\Webif\Lambang.jpg"
+        <img src="C:\xampp\htdocs\Webif\IMAGE\Lambang.jpg"
         width="500px"/>
     </center>
     <h3>KETUA WALID</h3>
