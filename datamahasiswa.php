@@ -1,6 +1,13 @@
 <?php
 
-    require 'function.php';
+session_start();
+if (isset($_SESSION["login"]))
+{
+        header("Location: login.php");
+        exit;
+}
+
+    include 'function.php';
 
     $query = "SELECT * FROM mahasiswa";
     $rows = query($query); /// hasilnya wadah dengan isinya
@@ -24,6 +31,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a href="logout.php">Logout</a> 
     <h1>Data mahasiswa </h1>
 
     <a href="tambahdata.php"><button style="margin-bottom: 12px;
@@ -49,10 +57,17 @@
             <td><?= $mhs["nim"]?></td>
             <td><?= $mhs["jurusan"]?></td>
             <td><?= $mhs["nohp"]?></td>
-            <td><a href="hapusdata.php/?id=<?= $mhs["id"]?>"><button style="margin-bottom: 12px;
-             background-color: lightred;">Hapus Data</button></a></td>
+            <td>
+                <a href="hapusdata.php?id=<?= $mhs['id'] ?>" onclick="return confirm('Yakin ingin menghapus?');">
+                    <button style="margin: 5px; background-color: red; color: white;">Hapus</button>
+                </a>
+                <a href="ubahdata.php?id=<?= $mhs['id'] ?>">
+                    <button style="margin-bottom: 12px; background-color: blue; ">Edit</button>
+                </a>
+            </td>
         </tr>
         <?php $i++; } ?>
+        
     </table>
 </body>
 </html>
